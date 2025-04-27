@@ -3,8 +3,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:ghapfy_team_app/controller/ui_controller/auth_ui_controller.dart';
 import 'package:ghapfy_team_app/controller/ui_controller/get_user_profile.dart';
+import 'package:ghapfy_team_app/features/view/login_screen.dart';
 
-import 'features/routes/app_routes.dart';
 void main(){
   Get.put(AuthController());
   Get.put(ProfileController());
@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Talent Share App',
+      title: 'Talent  App',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.login,
+     home: LoginScreen(),
       builder: EasyLoading.init(),
-      getPages: AppRoutes.routes,
+     
     );
   }
 }

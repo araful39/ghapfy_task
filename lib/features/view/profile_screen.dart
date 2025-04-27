@@ -3,14 +3,29 @@ import 'package:get/get.dart';
 import 'package:ghapfy_team_app/controller/ui_controller/get_user_profile.dart';
 import 'package:ghapfy_team_app/controller/ui_controller/logout_contorller.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final ProfileController controller = Get.put(ProfileController());
-    final LogoutController logController = Get.put(LogoutController());
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
 
+class _ProfileScreenState extends State<ProfileScreen> {
+  late final ProfileController controller;
+  late final LogoutController logController;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = Get.put(ProfileController());
+    logController = Get.put(LogoutController());
+
+    // Optionally, you can manually call fetchUserProfile if needed
+    controller.fetchUserProfile();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
@@ -132,7 +147,7 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    // TODO: Navigate to Update Profile screen
+                  
                   },
                   icon: const Icon(Icons.edit),
                   label: const Text('Update Profile'),
@@ -202,7 +217,7 @@ class ProfileScreen extends StatelessWidget {
           TextButton(
             onPressed: () async {
               await logController.logout(context);
-              Navigator.pop(context); // Close the dialog after logout
+           
             },
             child: const Text('Logout'),
           ),

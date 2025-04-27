@@ -8,11 +8,7 @@ class ProfileController extends GetxController {
 
   final GetUserProfileService _service = GetUserProfileService();
 
-  @override
-  void onInit() {
-    super.onInit();
-    fetchUserProfile();
-  }
+
 
   Future<void> fetchUserProfile() async {
     try {
