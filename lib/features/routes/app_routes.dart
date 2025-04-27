@@ -17,7 +17,7 @@ class AppRoutes {
   static final routes = [
     GetPage(name: login, page: () => LoginScreen()),
     GetPage(name: feed, page: () => FeedScreen()),
-    GetPage(name: createPost, page: () => PostCreateScreen()),
+    // GetPage(name: createPost, page: () => PostCreateScreen()),
     // GetPage(name: comment, page: () => CommentScreen()),
     GetPage(name: profile, page: () => ProfileScreen()),
   ];

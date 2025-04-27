@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-import '../../controller/ui_controller/auth_controller.dart';
+import '../../controller/ui_controller/auth_ui_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -22,6 +22,7 @@ class LoginScreen extends StatelessWidget {
         child: Form(
           key: _formKey,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
                 controller: emailController,

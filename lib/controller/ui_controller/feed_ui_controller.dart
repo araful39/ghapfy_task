@@ -1,3 +1,4 @@
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import '../../controller/service_controller/feed_service_controller.dart';
 import '../../features/models/feed_model.dart';
@@ -9,9 +10,8 @@ class FeedController extends GetxController {
   final isLoading = false.obs;
 
   // Provide a non-nullable stream with initial empty state
-  Stream<FeedModel> get postStream => feedModel.stream
-      .where((model) => model != null)
-      .map((model) => model!);
+  Stream<FeedModel> get postStream =>
+      feedModel.stream.where((model) => model != null).map((model) => model!);
 
   @override
   void onInit() {
@@ -25,7 +25,8 @@ class FeedController extends GetxController {
       final fetchedFeed = await _feedService.getFeeds();
       feedModel.value = fetchedFeed;
     } catch (e) {
-      Get.snackbar('Error', 'Failed to load feeds: $e');
+      EasyLoading.showError("Failed to load feeds: $e");
+     
       feedModel.value = null;
     } finally {
       isLoading.value = false;

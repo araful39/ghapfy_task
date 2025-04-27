@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ghapfy_team_app/controller/ui_controller/auth_controller.dart';
-import 'package:ghapfy_team_app/controller/ui_controller/pots_controller.dart';
-import 'package:ghapfy_team_app/controller/ui_controller/profile_controller.dart';
+import 'package:ghapfy_team_app/controller/ui_controller/auth_ui_controller.dart';
+import 'package:ghapfy_team_app/controller/ui_controller/get_user_profile.dart';
 
 import 'features/routes/app_routes.dart';
 void main(){
   Get.put(AuthController());
-  Get.put(PostController());
   Get.put(ProfileController());
   runApp(MyApp());
 }
