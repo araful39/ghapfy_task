@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:ghapfy_team_app/features/models/logout_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,7 +20,7 @@ class LogoutService {
     final url = Uri.parse('$_baseUrl/v1/user/logout');
 
     try {
-      final response = await http.post(
+      final response = await http.patch(
         url,
         headers: {
           'Content-Type': 'application/json',
@@ -29,6 +30,8 @@ class LogoutService {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final data = jsonDecode(response.body);
+
+        log("----------------------data$data------------------------------------------");
         return LogOutModel.fromJson(data);
       } else {
         throw Exception('Logout failed: ${response.statusCode}');

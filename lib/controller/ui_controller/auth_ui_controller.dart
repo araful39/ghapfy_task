@@ -1,6 +1,7 @@
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:ghapfy_team_app/controller/service_controller/login_service_controller.dart';
+import 'package:ghapfy_team_app/features/view/feed_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ghapfy_team_app/features/models/login_model.dart';
 
@@ -13,15 +14,19 @@ class AuthController extends GetxController {
     EasyLoading.show(status: 'Logging in...');
 
     try {
-      LogInModel user = await _loginService.postLogin(email: email, password: password);
+      LogInModel user = await _loginService.postLogin(
+        email: email,
+        password: password,
+      );
 
-      final token = user.data?.accessToken; // Update based on your JSON structure
+      final token =
+          user.data?.accessToken; // Update based on your JSON structure
       if (token != null) {
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('auth_token', token);
         isLoggedIn.value = true;
         EasyLoading.dismiss();
-        Get.offAllNamed('/feed');
+        Get.to(() => FeedScreen());
       } else {
         throw Exception('Token not found in response');
       }

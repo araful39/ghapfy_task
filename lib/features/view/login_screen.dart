@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../../controller/ui_controller/auth_ui_controller.dart';
 
-class LoginScreen extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+class LoginScreen extends StatefulWidget {
 
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+
+  final emailController = TextEditingController();
+
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
